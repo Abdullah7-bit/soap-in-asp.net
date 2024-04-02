@@ -44,3 +44,4 @@ C:\Users\MYSQ\source\repos\SOAP_Services\obj\Debug\net8.0\refint\SOAP_Services.d
 C:\Users\MYSQ\source\repos\SOAP_Services\obj\Debug\net8.0\SOAP_Services.pdb
 C:\Users\MYSQ\source\repos\SOAP_Services\obj\Debug\net8.0\SOAP_Services.genruntimeconfig.cache
 C:\Users\MYSQ\source\repos\SOAP_Services\obj\Debug\net8.0\ref\SOAP_Services.dll
+C:\Users\MYSQ\source\repos\SOAP_Services\obj\Debug\net8.0\SOAP_Services.sourcelink.json

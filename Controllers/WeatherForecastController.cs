@@ -43,6 +43,45 @@ namespace SOAP_Services.Controllers
         {
             return Ok(_users); // This will automatically serialize the list of users into XML
         }
+
+        [HttpPost]
+        [Consumes("application/xml")] // Accept XML in request body
+        public IActionResult AddUser([FromBody] User user)
+        {
+            _users.Add(user);
+            return CreatedAtAction(nameof(GetUsers), user); // Return 201 Created status with user data
+        }
+
+        [HttpPut("{id}")]
+        [Consumes("application/xml")]
+        public IActionResult UpdateUser(int id, [FromBody] User updatedUser)
+        {
+            var existingUser = _users.Find(u => u.Id == id);
+            if (existingUser == null)
+            {
+                return NotFound(); // User with specified id not found
+            }
+
+            // Update user properties
+            existingUser.Name = updatedUser.Name;
+            existingUser.Email = updatedUser.Email;
+
+            return NoContent(); // Return 204 No Content status
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult DeleteUser(int id)
+        {
+            var existingUser = _users.Find(u => u.Id == id);
+            if (existingUser == null)
+            {
+                return NotFound(); // User with specified id not found
+            }
+
+            _users.Remove(existingUser);
+            return NoContent(); // Return 204 No Content status
+        }
+
     }
     public class User
     {

@@ -1,0 +1,11 @@
+Hey [Name],
+
+The motivation behind this comment is I want the .NET MAUI to compete with React Native and Flutter, my personal observations are the entry bar to 
+
+The Google is heavily investing in the marketing of the Flutter in its Google I/O events creating engaging activities made in Flutter like limited duration game that attract and shows people what is Flutter is capable of.
+
+I want the same thing from the 
+My comment is not to offened and discard the efforts of .NET MAUI team being a fellow developer as well.
+
+In other words my My comment should phrase like "Please do more marketing of .NET MAUI plz" and I want to know the reason behind why .NET MAUI is not regressively pushing that If that is because of lack of features please ship those feature on fast track.
+My apologies if my comment hurts any sentiments of .NET MAUI Team.

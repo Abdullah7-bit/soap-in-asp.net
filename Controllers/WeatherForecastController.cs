@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using SOAP_Services.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,8 @@ namespace SOAP_Services.Controllers
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
     {
+        private readonly DataContext _dbContext;
+
         private static readonly string[] Summaries = new[]
         {
             "freezing", "bracing", "chilly", "cool", "mild", "warm", "balmy", "hot", "sweltering", "scorching"
@@ -18,9 +21,10 @@ namespace SOAP_Services.Controllers
         private readonly ILogger<WeatherForecastController> _logger;
 
         // Constructor injection for ILogger
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        public WeatherForecastController(ILogger<WeatherForecastController> logger, DataContext dbContext)
         {
             _logger = logger;
+            _dbContext = dbContext;
         }
 
         [HttpGet("weather")] // Unique route for this action
@@ -35,6 +39,23 @@ namespace SOAP_Services.Controllers
                 TemperatureC = new Random().Next(-20, 55),
                 Summary = Summaries[new Random().Next(Summaries.Length)]
             }).ToArray();
+        }
+
+        [HttpGet]
+        [Produces("application/xml")]
+        public IActionResult GetBooks()
+        {
+            try
+            {
+                var books = _dbContext.Books.ToList(); // Retrieve all books from the database
+
+                return Ok(books); // Return books in XML format
+            }
+            catch (Exception ex)
+            {
+                // Log the exception
+                return StatusCode(500, $"Internal Server Error: {ex.Message}");
+            }
         }
 
         // Sample data - replace this with your actual data source
